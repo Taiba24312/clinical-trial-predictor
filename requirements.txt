@@ -4,5 +4,4 @@ torch
 joblib
 numpy
 xgboost
-tokenizers
 sentencepiece
