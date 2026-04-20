@@ -2,7 +2,7 @@ import streamlit as st
 import joblib
 import torch
 import numpy as np
-from transformers import AutoTokenizer, AutoModel
+from transformers import BertTokenizer, BertModel
 
 # ===== PAGE CONFIG =====
 st.set_page_config(page_title="Clinical Trial Predictor", layout="wide")
@@ -11,11 +11,8 @@ st.set_page_config(page_title="Clinical Trial Predictor", layout="wide")
 model = joblib.load("clinical_trial_final_model_log_transform.pkl")
 
 # ===== LOAD BERT =====
-tokenizer = AutoTokenizer.from_pretrained(
-    "dmis-lab/biobert-base-cased-v1.1",
-    use_fast=False
-)
-bert_model = AutoModel.from_pretrained("dmis-lab/biobert-base-cased-v1.1")
+tokenizer = BertTokenizer.from_pretrained("bert-base-cased")
+bert_model = BertModel.from_pretrained("dmis-lab/biobert-base-cased-v1.1")
 bert_model.eval()
 
 # ===== MEAN POOLING =====
