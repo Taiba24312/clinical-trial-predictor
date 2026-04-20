@@ -11,7 +11,10 @@ st.set_page_config(page_title="Clinical Trial Predictor", layout="wide")
 model = joblib.load("clinical_trial_final_model_log_transform.pkl")
 
 # ===== LOAD BERT =====
-tokenizer = AutoTokenizer.from_pretrained("dmis-lab/biobert-base-cased-v1.1")
+tokenizer = AutoTokenizer.from_pretrained(
+    "dmis-lab/biobert-base-cased-v1.1",
+    use_fast=False
+)
 bert_model = AutoModel.from_pretrained("dmis-lab/biobert-base-cased-v1.1")
 bert_model.eval()
 
